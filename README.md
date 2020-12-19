@@ -82,17 +82,50 @@ Visite o site do Material-UI para seguir as instruções de instalação e conhe
 
 ### Agora sim, #partiu DESENVOLVIMENTO
 
+<br>
 
 Antes de criarmos nossos códigos, vamos "limpar" a aplicação, removendo conteúdos desnecessários:
 
-- em `App.css`, apague todo o conteúdo interno.
-- em `App.js`, apague a importação da logo e todo o conteúdo dentro do return, substituindo-o por uma *div vazia*.
-- apague o arquivo `logo.svg`
+- em `App.js`, apague as importações da logo e do App.css e todo o conteúdo dentro do return, substituindo-o por uma *div vazia*.
+- apague os arquivos `logo.svg` e `App.css`.
 
 <br>
 
+Em `src` vamos criar uma pasta `pages`, onde incluiremos as páginas da nossa aplicação. 
+- Nesse projeto, em especial, haverá apenas uma página, a **Home**
+
+<br>
+
+Em `pages` criaremos a pasta `Home`:
 
 
+```
+import { Box, Grid, Typography } from "@material-ui/core";
+
+function Home() {
+  return (
+    <Box m={4}>
+      <Typography variant="h3" component="h1" align="center" gutterBottom>
+        CRUD dos DEVinHouse
+      </Typography>
+
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4} spacing={2}>
+          {/* Aqui vai nosso cadastro */}
+        </Grid>
+
+        <Grid item xs={12} sm={8} spacing={2}>
+          {/* Aqui vai nossa listagem */}
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
+
+export default Home;
+```
+
+<br>
 
 
 
