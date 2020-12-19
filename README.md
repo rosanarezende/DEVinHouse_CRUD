@@ -106,13 +106,7 @@ import { Box, Grid, Typography } from "@material-ui/core";
 function Home() {
   return (
     <Box m={4}>
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        gutterBottom
-        color="textSecondary"
-      >
+      <Typography variant="h2" component="h1" align="center" gutterBottom color="textSecondary">
         CRUD dos DEVinHouse
       </Typography>
 
@@ -153,20 +147,8 @@ function Cadastro() {
         Cadastro
       </Typography>
       <Box component="form">
-        <TextField
-          variant="outlined"
-          size="small"
-          label="Nome"
-          fullWidth
-          margin="dense"
-        />
-        <TextField
-          variant="outlined"
-          size="small"
-          label="Sobrenome"
-          fullWidth
-          margin="dense"
-        />
+        <TextField variant="outlined" size="small" label="Nome" fullWidth margin="dense"/>
+        <TextField variant="outlined" size="small" label="Sobrenome" fullWidth margin="dense"/>
         <Box className="button-wrapper">
           <Button variant="contained" color="primary">Salvar</Button>
         </Box>
@@ -196,17 +178,7 @@ Em **CONTAINERS** criaremos também a pasta `Listagem`:
 `index.js`
 ```javascript
 import "./index.css";
-import {
-  Box,
-  Paper,
-  Typography,
-  Button,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@material-ui/core";
+import { Box, Paper, Typography, Button, Table, TableHead, TableBody, TableRow, TableCell } from "@material-ui/core";
 import { Edit, Delete } from "@material-ui/icons";
 
 // vamos criar uma linha, apenas para visualizar a renderização na tela
@@ -232,19 +204,10 @@ function Listagem() {
               <TableCell align="center">{linha.nome}</TableCell>
               <TableCell align="center">{linha.sobrenome}</TableCell>
               <TableCell align="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ marginRight: "10px" }}
-                  startIcon={<Edit />}
-                >
+                <Button variant="contained" color="primary" style={{ marginRight: "10px" }} startIcon={<Edit />}>
                   Editar
                 </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<Delete />}
-                >
+                <Button variant="contained" color="secondary" startIcon={<Delete />}>
                   Deletar
                 </Button>
               </TableCell>
@@ -290,32 +253,17 @@ function Home() {
 
   return (
     <Box m={4}>
-      <Typography
-        variant="h2"
-        component="h1"
-        align="center"
-        gutterBottom
-        color="textSecondary"
-      >
+      <Typography variant="h2" component="h1" align="center" gutterBottom color="textSecondary">
         CRUD dos DEVinHouse
       </Typography>
 
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4}>
-          <Cadastro
-            pessoa={pessoa}
-            setPessoa={setPessoa}
-            pessoas={pessoas}
-            setPessoas={setPessoas}
-          />
+          <Cadastro pessoa={pessoa} setPessoa={setPessoa} pessoas={pessoas} setPessoas={setPessoas}/>
         </Grid>
 
         <Grid item xs={12} sm={8}>
-          <Listagem
-            setPessoa={setPessoa}
-            pessoas={pessoas}
-            setPessoas={setPessoas}
-          />
+          <Listagem setPessoa={setPessoa} pessoas={pessoas} setPessoas={setPessoas}/>
         </Grid>
       </Grid>
     </Box>
@@ -344,18 +292,10 @@ function Cadastro(props) {
     e.preventDefault();
     const pessoaNaLista = pessoas.some((item) => item.id === pessoa.id);
     if (pessoaNaLista) {
-      const result = pessoas.map((item) =>
-        item.id === pessoa.id ? pessoa : item
-      );
+      const result = pessoas.map((item) => item.id === pessoa.id ? pessoa : item);
       setPessoas(result);
     } else {
-      setPessoas([
-        ...pessoas,
-        {
-          ...pessoa,
-          id: Math.random().toString(36).substr(2, 9),
-        },
-      ]);
+      setPessoas([ ...pessoas, { ...pessoa, id: Math.random().toString(36).substr(2, 9) } ]);
     }
     setPessoa({ id: 0, nome: "", sobrenome: "" });
   };
@@ -367,26 +307,12 @@ function Cadastro(props) {
       </Typography>
       <Box component="form" onSubmit={handleSubmit}>
         <TextField
-          required
-          fullWidth
-          margin="dense"
-          variant="outlined"
-          size="small"
-          label="Nome"
-          name="nome"
-          value={pessoa.nome}
-          onChange={(e) => handleChange(e.target)}
+          required fullWidth margin="dense" variant="outlined" size="small" 
+          label="Nome" name="nome" value={pessoa.nome} onChange={(e) => handleChange(e.target)}
         />
         <TextField
-          required
-          fullWidth
-          margin="dense"
-          variant="outlined"
-          size="small"
-          label="Sobrenome"
-          name="sobrenome"
-          value={pessoa.sobrenome}
-          onChange={(e) => handleChange(e.target)}
+          required fullWidth margin="dense" variant="outlined" size="small"
+          label="Sobrenome" name="sobrenome" value={pessoa.sobrenome} onChange={(e) => handleChange(e.target)}
         />
         <Box className="button-wrapper">
           <Button variant="contained" color="primary" type="submit">
@@ -406,17 +332,7 @@ export default Cadastro;
 Em `scr/containers/Listagem/index.js`, teremos:
 
 ```javascript
-import {
-  Box,
-  Paper,
-  Typography,
-  Button,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@material-ui/core";
+import { Box, Paper, Typography, Button, Table, TableHead, TableBody, TableRow, TableCell } from "@material-ui/core";
 import { Edit, Delete } from "@material-ui/icons";
 
 function Listagem(props) {
@@ -451,21 +367,10 @@ function Listagem(props) {
               <TableCell align="center">{item.nome}</TableCell>
               <TableCell align="center">{item.sobrenome}</TableCell>
               <TableCell align="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ marginRight: "10px" }}
-                  startIcon={<Edit />}
-                  onClick={() => handleEdit(item.id)}
-                >
+                <Button variant="contained" color="primary" style={{ marginRight: "10px" }} startIcon={<Edit />} onClick={() => handleEdit(item.id)}>
                   Editar
                 </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<Delete />}
-                  onClick={() => handleDelete(item.id)}
-                >
+                <Button variant="contained" color="secondary" startIcon={<Delete />} onClick={() => handleDelete(item.id)}>
                   Deletar
                 </Button>
               </TableCell>
