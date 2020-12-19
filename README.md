@@ -14,7 +14,7 @@ CRUD desenvolvido pelos alunos do curso DEVinHouse para revisão dos assuntos da
 
 - Verificar se tem node instalado
 
-    ```
+    ```bash
     node -v
     ```
 
@@ -31,23 +31,65 @@ CRUD desenvolvido pelos alunos do curso DEVinHouse para revisão dos assuntos da
 
 - Na pasta que desejamos, criar o projeto:
 
-    ```
+    ```bash
     npx create-react-app crud
     ```
 
 <br>
 
-- Entrar na pasta do projeto e rodar a aplicação:
+- Abrir o projeto no seu editor preferido (indico o *Visual Studio Code*):
 
-    ```
-    npm start
+    ```bash
+    code crud
     ```
 
 <br>
 
+- Abrir um terminal e rodar a aplicação:
+
+    ```bash
+    npm start
+    ```
+
+    *OBS: Em geral ele irá renderizar a aplicação na porta 3000 (http://localhost:3000)*
+
+<br>
 
 
+### Instalar Material-UI
 
+<br>
+
+Para agilizar o desenvolvimento e garantir a consistência do design, indico o uso de uma biblioteca de componentes desenvolvida para o React com base no **Material Design** (do Google :wink:)
+
+Visite o site do Material-UI para seguir as instruções de instalação e conhecer os componentes... esse site deve permanecer aberto durante todo o desenvolvimento do projeto para consultas: (https://material-ui.com/pt/)
+
+- Instale as bibliotecas de **componentes** e **ícones**:
+
+    ```bash
+    npm install @material-ui/core @material-ui/icons
+    ```
+
+<br>
+
+- No projeto, entre na pasta `public`, e dentro do arquivo arquivo `index.html`, dentro do _head_ carregue a **fonte** necessária para o Material, a *Roboto*:
+
+    ```
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    ```
+
+<br>
+
+### Agora sim, #partiu DESENVOLVIMENTO
+
+
+Antes de criarmos nossos códigos, vamos "limpar" a aplicação, removendo conteúdos desnecessários:
+
+- em `App.css`, apague todo o conteúdo interno.
+- em `App.js`, apague a importação da logo e todo o conteúdo dentro do return, substituindo-o por uma *div vazia*.
+- apague o arquivo `logo.svg`
+
+<br>
 
 
 
