@@ -96,10 +96,11 @@ Em `src` vamos criar uma pasta `pages`, onde incluiremos as páginas da nossa ap
 
 <br>
 
-Em `pages` criaremos a pasta `Home`:
+Em **PAGES** criaremos a pasta `Home`:
 
 
-```
+`index.js`
+```javascript
 import { Box, Grid, Typography } from "@material-ui/core";
 
 function Home() {
@@ -127,6 +128,69 @@ export default Home;
 
 <br>
 
+Para organizar nosso código, em `src` vamos criar uma pasta `containers`, onde incluiremos partes do código que são grandes, mas não o suficiente para ser uma página. 
+- Nesse projeto haverá 2 containers: **Cadastro** e **Listagem**.
+
+<br>
+
+Em **CONTAINERS** criaremos a pasta `Cadastro`:
+
+`index.js`
+```javascript
+import "./index.css";
+import { Box, Paper, Typography, TextField, Button } from "@material-ui/core";
+
+function Cadastro() {
+  return (
+    <Box component={Paper} p={2}>
+      <Typography variant="h5" component="h2" gutterBottom>
+        Cadastro
+      </Typography>
+      <Box component="form">
+        <TextField
+          variant="outlined"
+          size="small"
+          label="Nome"
+          fullWidth
+          margin="dense"
+        />
+        <TextField
+          variant="outlined"
+          size="small"
+          label="Sobrenome"
+          fullWidth
+          margin="dense"
+        />
+        <Box className="button-wrapper">
+          <Button variant="contained">Salvar</Button>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
+export default Cadastro;
+```
+
+`index.css`
+```css
+.button-wrapper{
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 0;
+}
+```
+
+*OBS: Por enquanto não nos preocupamos com a lógica, mas tão somente com a parte visual da aplicação.*
+
+<br>
+
+Em **CONTAINERS** criaremos também a pasta `Listagem`:
+
+`index.js`
+```javascript
+
+```
 
 
 
@@ -135,6 +199,11 @@ export default Home;
 
 
 
+
+
+
+
+<br>
 
 ### Expor seu projeto na web (deploy com SURGE)
 
