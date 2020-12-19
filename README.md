@@ -106,7 +106,13 @@ import { Box, Grid, Typography } from "@material-ui/core";
 function Home() {
   return (
     <Box m={4}>
-      <Typography variant="h3" component="h1" align="center" gutterBottom>
+      <Typography
+        variant="h2"
+        component="h1"
+        align="center"
+        gutterBottom
+        color="textSecondary"
+      >
         CRUD dos DEVinHouse
       </Typography>
 
@@ -143,7 +149,7 @@ import { Box, Paper, Typography, TextField, Button } from "@material-ui/core";
 function Cadastro() {
   return (
     <Box component={Paper} p={2}>
-      <Typography variant="h5" component="h2" gutterBottom>
+      <Typography variant="h4" component="h2" gutterBottom color="primary">
         Cadastro
       </Typography>
       <Box component="form">
@@ -162,7 +168,7 @@ function Cadastro() {
           margin="dense"
         />
         <Box className="button-wrapper">
-          <Button variant="contained">Salvar</Button>
+          <Button variant="contained" color="primary">Salvar</Button>
         </Box>
       </Box>
     </Box>
@@ -189,13 +195,83 @@ Em **CONTAINERS** criaremos também a pasta `Listagem`:
 
 `index.js`
 ```javascript
+import "./index.css";
+import {
+  Box,
+  Paper,
+  Typography,
+  Button,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+import { Edit, Delete } from "@material-ui/icons";
 
+// vamos criar uma linha, apenas para visualizar a renderização na tela
+const linhas = [{ id: 1, nome: "Fulana", sobrenome: "de Tal" }];
+
+function Listagem() {
+  return (
+    <Box component={Paper} p={2}>
+      <Typography variant="h4" component="h2" gutterBottom color="primary">
+        Listagem
+      </Typography>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">NOME</TableCell>
+            <TableCell align="center">SOBRENOME</TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {linhas.map((linha) => (
+            <TableRow key={linha.id}>
+              <TableCell align="center">{linha.nome}</TableCell>
+              <TableCell align="center">{linha.sobrenome}</TableCell>
+              <TableCell align="center">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ marginRight: "10px" }}
+                  startIcon={<Edit />}
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<Delete />}
+                >
+                  Deletar
+                </Button>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Box>
+  );
+}
+
+export default Listagem;
 ```
 
+<br>
 
+Esse é o resultado da nossa aplicação até o momento:
 
+<div align="center">
+  <img  src='https://user-images.githubusercontent.com/45580434/102692448-0499a000-41f2-11eb-98fa-e7ae15921f27.png' alt="crud">
+</div><br>
 
+<br>
 
+### Vamos "dar vida" a essa aplicação :neckbeard:
+
+<br>
 
 
 
@@ -205,11 +281,11 @@ Em **CONTAINERS** criaremos também a pasta `Listagem`:
 
 <br>
 
-### Expor seu projeto na web (deploy com SURGE)
+### E, finalmente, vamos expor nosso projeto na web (deploy com SURGE)
 
 <br>
 
-- Buildar o projeto
+- Primeiro "buildamos" o projeto
 
     ```
     npm run build
@@ -217,7 +293,7 @@ Em **CONTAINERS** criaremos também a pasta `Listagem`:
 
 <br>
 
-- Criar um arquivo 202.html para poder usar subrotas
+- Dica: sempre criar um arquivo 202.html para poder usar subrotas
 
     ```
     cp build/index.html build/200.html
