@@ -11,19 +11,40 @@ function Cadastro({ pessoa, setPessoa, pessoas, setPessoas }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setPessoas(pessoas.push(pessoa));
-    setPessoas([
-      ...pessoas,
-      {
-        ...pessoa,
-        id: Math.random().toString(36).substr(2, 9),
-      },
-    ]);
+
+    const existePessoa = pessoas.some(item => item.id === pessoa.id);
+
+    if (existePessoa) {
+
+      const result = pessoas.map(item => {
+
+        if (item.id === pessoa.id) {
+          return pessoa;
+        }
+        else {
+          return item;
+        }
+      })
+      setPessoas(result);
+    }
+
+    else {
+
+      // setPessoas(pessoas.push(pessoa));
+      setPessoas([
+        ...pessoas,
+        {
+          ...pessoa,
+          id: Math.random().toString(36).substr(2, 9),
+        },
+      ]);
+    }
     setPessoa({
       id: 0,
       nome: "",
       sobrenome: "",
     });
+
   };
 
   return (

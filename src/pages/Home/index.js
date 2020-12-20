@@ -37,7 +37,7 @@ function Home() {
           />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Listagem pessoas={pessoas} setPessoas={setPessoas} />
+          <Listagem pessoas={pessoas} setPessoas={setPessoas} setPessoa={setPessoa} />
         </Grid>
       </Grid>
     </Box>
