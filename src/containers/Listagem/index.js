@@ -12,7 +12,21 @@ import {
 import { Edit, Delete } from "@material-ui/icons";
 
 function Listagem(props) {
-  const { pessoas, setPessoas } = props;
+  const { pessoas, setPessoas, setPessoa } = props;
+
+
+  const handleEdit = (id) => { 
+    const pessoaClicada = pessoas.find (item => item.id === id);
+    setPessoa(pessoaClicada);
+
+   }
+
+  const handleDelete = (id) => { 
+    const result = pessoas.filter (item => item.id !== id);
+    setPessoas (result);
+   }
+
+
   return (
     <Box component={Paper} p={2}>
       <Typography variant="h4" component="h2" gutterBottom color="primary">
@@ -37,6 +51,7 @@ function Listagem(props) {
                   color="primary"
                   style={{ marginRight: "10px" }}
                   startIcon={<Edit />}
+                  onClick={() => handleEdit(linha.id)}
                 >
                   Editar
                 </Button>
@@ -44,6 +59,7 @@ function Listagem(props) {
                   variant="contained"
                   color="secondary"
                   startIcon={<Delete />}
+                  onClick={() => handleDelete(linha.id)}
                 >
                   Deletar
                 </Button>
